@@ -1,5 +1,6 @@
 package com.pokemondb.pokemon_box.service;
 
+import com.pokemondb.pokemon_box.dto.GetPokemonTeamDTO;
 import com.pokemondb.pokemon_box.model.Pokemon;
 import com.pokemondb.pokemon_box.model.Team;
 import com.pokemondb.pokemon_box.model.TeamData;
@@ -58,7 +59,7 @@ public class TeamService {
     }
 
     // Read Pokemon from team
-    public List<TeamData> getPokemonFromTeam(List<Integer> team_id) {
-        return teamDataRepository.findAllById(team_id);
+    public List<GetPokemonTeamDTO> getPokemonFromTeam(Integer team_id) {
+        return teamDataRepository.findPokemonByTeamId(team_id);
     }
 }

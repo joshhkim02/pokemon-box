@@ -1,6 +1,7 @@
 package com.pokemondb.pokemon_box.controller;
 
 import com.pokemondb.pokemon_box.dto.AddPokemonDTO;
+import com.pokemondb.pokemon_box.dto.GetPokemonTeamDTO;
 import com.pokemondb.pokemon_box.dto.UpdateTeamNameDTO;
 import com.pokemondb.pokemon_box.model.Team;
 import com.pokemondb.pokemon_box.model.TeamData;
@@ -9,6 +10,7 @@ import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -41,4 +43,10 @@ public class TeamController {
     public TeamData addPokemonToTeam(@RequestBody AddPokemonDTO request) {
         return teamService.addPokemonToTeam(request.getTeamId(), request.getPokeId(), request.getPosition());
     }
+
+    @GetMapping("/team/add/{id}")
+    public List<GetPokemonTeamDTO> getPokemonFromTeam(@PathVariable Integer id) {
+        return teamService.getPokemonFromTeam(id);
+    }
+
 }
