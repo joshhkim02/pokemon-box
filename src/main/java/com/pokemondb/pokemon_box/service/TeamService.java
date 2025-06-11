@@ -3,6 +3,7 @@ package com.pokemondb.pokemon_box.service;
 import com.pokemondb.pokemon_box.model.Pokemon;
 import com.pokemondb.pokemon_box.model.Team;
 import com.pokemondb.pokemon_box.model.TeamData;
+import com.pokemondb.pokemon_box.repository.PokemonRepository;
 import com.pokemondb.pokemon_box.repository.TeamDataRepository;
 import com.pokemondb.pokemon_box.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class TeamService {
 
     @Autowired
     private TeamDataRepository teamDataRepository;
+
+    @Autowired
+    private PokemonRepository pokemonRepository;
 
     // Create team
     public Team saveTeam(Team team) {
@@ -43,9 +47,11 @@ public class TeamService {
     }
 
     // Create Pokemon for team
-    public TeamData addPokemonToTeam(Integer teamId, Pokemon pokemon, Integer position) {
+    public TeamData addPokemonToTeam(Integer teamId, Integer pokeId, Integer position) {
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new RuntimeException("Team not found"));
+
+        Pokemon pokemon = pokemonRepository.findById(pokeId).orElseThrow(() -> new RuntimeException("Pokemon not found"));
 
         TeamData teamData = new TeamData(team, pokemon, position);
         return teamDataRepository.save(teamData);

@@ -16,7 +16,7 @@ public class Team {
 
     private String team_name;
 
-    @OneToMany(mappedBy="pokemon_teams", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="team", cascade=CascadeType.ALL)
     @OrderBy("position")
     private List<TeamData> teamData = new ArrayList<>();
 

@@ -2,17 +2,17 @@ package com.pokemondb.pokemon_box.model;
 
 import jakarta.persistence.*;
 
+
 @Entity
+@IdClass(TeamDataId.class)
 public class TeamData {
 
     @Id
-    @GeneratedValue
-    private Integer id;
-
     @ManyToOne
     @JoinColumn(name="team_id")
     private Team team;
 
+    @Id
     @ManyToOne
     @JoinColumn(name="poke_id")
     private Pokemon pokemon;
@@ -59,4 +59,5 @@ public class TeamData {
                 ", position=" + position +
                 '}';
     }
+
 }
