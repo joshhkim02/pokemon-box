@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 
 
 @Entity
-@IdClass(TeamDataId.class)
+// Composite Key class (See TeamDataComposite)
+@IdClass(TeamDataComposite.class)
 public class TeamData {
 
     @Id

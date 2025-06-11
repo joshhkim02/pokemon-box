@@ -1,11 +1,15 @@
 package com.pokemondb.pokemon_box.controller;
 
-import com.pokemondb.pokemon_box.model.AddPokemonDTO;
+import com.pokemondb.pokemon_box.dto.AddPokemonDTO;
+import com.pokemondb.pokemon_box.dto.UpdateTeamNameDTO;
 import com.pokemondb.pokemon_box.model.Team;
 import com.pokemondb.pokemon_box.model.TeamData;
 import com.pokemondb.pokemon_box.service.TeamService;
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -16,6 +20,21 @@ public class TeamController {
     @PostMapping("/team")
     public Team addTeam(@RequestBody Team team) {
         return teamService.saveTeam(team);
+    }
+
+    @GetMapping("/team/{id}")
+    public Optional<Team> getTeam(@PathVariable Integer id) {
+        return teamService.getTeamById(id);
+    }
+
+    @PutMapping("/team/{id}")
+    public Team updateTeam(@PathVariable Integer id, @RequestBody UpdateTeamNameDTO request) {
+        return teamService.updateTeamName(id, request.getNewName());
+    }
+
+    @DeleteMapping("/team/{id}")
+    public void deleteTeam(@PathVariable Integer id) {
+        teamService.deleteTeam(id);
     }
 
     @PostMapping("/team/add")
