@@ -4,6 +4,7 @@ import com.pokemondb.pokemon_box.dto.GetPokemonTeamDTO;
 import com.pokemondb.pokemon_box.model.Pokemon;
 import com.pokemondb.pokemon_box.model.Team;
 import com.pokemondb.pokemon_box.model.TeamData;
+import com.pokemondb.pokemon_box.model.TeamDataComposite;
 import com.pokemondb.pokemon_box.repository.PokemonRepository;
 import com.pokemondb.pokemon_box.repository.TeamDataRepository;
 import com.pokemondb.pokemon_box.repository.TeamRepository;
@@ -37,7 +38,7 @@ public class TeamService {
     // Update team
     public Team updateTeamName(Integer teamId, String newName) {
         Team team = teamRepository.findById(teamId).orElseThrow(() -> new RuntimeException("Team not found"));
-        team.setTeam_name(newName);
+        team.setTeamName(newName);
         return teamRepository.save(team);
     }
 
@@ -45,6 +46,19 @@ public class TeamService {
     public void deleteTeam(Integer id){
         Team team = teamRepository.findById(id).orElseThrow(() -> new RuntimeException("Team not found"));
         teamRepository.delete(team);
+    }
+
+    // Helper method for composite key
+    public TeamDataComposite createCompositeKey(Integer teamId, Integer pokeId) {
+        return new TeamDataComposite(teamId, pokeId);
+    }
+
+    // Helper method to get TeamData info
+    private TeamData getTeamData(Integer teamId, Integer pokeId) {
+        TeamDataComposite key = createCompositeKey(teamId, pokeId);
+        return teamDataRepository.findById(key)
+                .orElseThrow(() -> new RuntimeException(
+                        String.format("TeamData not found for team %d and pokemon %d", teamId, pokeId)));
     }
 
     // Create Pokemon for team
@@ -61,5 +75,11 @@ public class TeamService {
     // Read Pokemon from team
     public List<GetPokemonTeamDTO> getPokemonFromTeam(Integer team_id) {
         return teamDataRepository.findPokemonByTeamId(team_id);
+    }
+
+    // Delete Pokemon from team
+    public void deletePokemonFromTeam(Integer teamId, Integer pokeId) {
+        TeamDataComposite compositeKey = createCompositeKey(teamId, pokeId);
+        teamDataRepository.deleteById(compositeKey);
     }
 }

@@ -1,6 +1,7 @@
 package com.pokemondb.pokemon_box.controller;
 
 import com.pokemondb.pokemon_box.dto.AddPokemonDTO;
+import com.pokemondb.pokemon_box.dto.DeletePokemonDTO;
 import com.pokemondb.pokemon_box.dto.GetPokemonTeamDTO;
 import com.pokemondb.pokemon_box.dto.UpdateTeamNameDTO;
 import com.pokemondb.pokemon_box.model.Team;
@@ -8,6 +9,7 @@ import com.pokemondb.pokemon_box.model.TeamData;
 import com.pokemondb.pokemon_box.service.TeamService;
 import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +49,12 @@ public class TeamController {
     @GetMapping("/team/add/{id}")
     public List<GetPokemonTeamDTO> getPokemonFromTeam(@PathVariable Integer id) {
         return teamService.getPokemonFromTeam(id);
+    }
+
+    @DeleteMapping("/team/add")
+    public ResponseEntity<String> deletePokemonFromTeam(@RequestBody DeletePokemonDTO request) {
+        teamService.deletePokemonFromTeam(request.getTeamId(), request.getPokeId());
+        return ResponseEntity.ok("Pokemon removed successfully");
     }
 
 }

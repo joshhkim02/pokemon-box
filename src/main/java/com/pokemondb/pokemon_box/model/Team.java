@@ -12,9 +12,9 @@ public class Team {
     @Id
     @Column(name="team_id")
     @GeneratedValue
-    private Integer team_id;
+    private Integer teamId;
 
-    private String team_name;
+    private String teamName;
 
     @OneToMany(mappedBy="team", cascade=CascadeType.ALL)
     @OrderBy("position")
@@ -22,32 +22,32 @@ public class Team {
 
     protected Team() {}
 
-    public Team(Integer team_id, String team_name) {
-        this.team_id = team_id;
-        this.team_name = team_name;
+    public Team(Integer teamId, String teamName) {
+        this.teamId = teamId;
+        this.teamName = teamName;
     }
 
-    public Integer getTeam_id() {
-        return team_id;
+    public Integer getTeamId() {
+        return teamId;
     }
 
-    public void setTeam_id(Integer team_id) {
-        this.team_id = team_id;
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
     }
 
-    public String getTeam_name() {
-        return team_name;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setTeam_name(String team_name) {
-        this.team_name = team_name;
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 
     @Override
     public String toString() {
         return "Team{" +
-                "team_id=" + team_id +
-                ", team_name='" + team_name + '\'' +
+                "teamId=" + teamId +
+                ", teamName='" + teamName + '\'' +
                 '}';
     }
 }
