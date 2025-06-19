@@ -9,6 +9,8 @@ public class DeletePokemonDTO {
         this.poke_id = poke_id;
     }
 
+    public DeletePokemonDTO() {}
+
     public Integer getTeamId() {
         return team_id;
     }

@@ -1,9 +1,6 @@
 package com.pokemondb.pokemon_box.controller;
 
-import com.pokemondb.pokemon_box.dto.AddPokemonDTO;
-import com.pokemondb.pokemon_box.dto.DeletePokemonDTO;
-import com.pokemondb.pokemon_box.dto.GetPokemonTeamDTO;
-import com.pokemondb.pokemon_box.dto.UpdateTeamNameDTO;
+import com.pokemondb.pokemon_box.dto.*;
 import com.pokemondb.pokemon_box.model.Team;
 import com.pokemondb.pokemon_box.model.TeamData;
 import com.pokemondb.pokemon_box.service.TeamService;
@@ -49,6 +46,11 @@ public class TeamController {
     @GetMapping("/team/add/{id}")
     public List<GetPokemonTeamDTO> getPokemonFromTeam(@PathVariable Integer id) {
         return teamService.getPokemonFromTeam(id);
+    }
+
+    @PutMapping("/team/add/{id}")
+    public TeamData updatePokemonOnTeam(@PathVariable Integer id, @RequestBody UpdatePokemonDTO request) {
+        return teamService.updatePokemonInTeam(id, request.getOldPokeId(), request.getNewPokeId());
     }
 
     @DeleteMapping("/team/add")

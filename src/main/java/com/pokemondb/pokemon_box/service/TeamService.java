@@ -77,6 +77,23 @@ public class TeamService {
         return teamDataRepository.findPokemonByTeamId(team_id);
     }
 
+    // Update Pokemon in team
+    public TeamData updatePokemonInTeam(Integer teamId, Integer oldPokeId, Integer newPokeId) {
+        TeamData currentTeam = getTeamData(teamId, oldPokeId);
+        Integer position = currentTeam.getPosition();
+        System.out.println(position);
+        Team team = currentTeam.getTeam();
+
+        Pokemon newPokemon = pokemonRepository.findById(newPokeId)
+                .orElseThrow(() -> new RuntimeException("Pokemon not found"));
+
+        TeamDataComposite oldPokemon = createCompositeKey(teamId, oldPokeId);
+        teamDataRepository.deleteById(oldPokemon);
+
+        TeamData newPokemonEntry = new TeamData(team, newPokemon, position);
+        return teamDataRepository.save(newPokemonEntry);
+    }
+
     // Delete Pokemon from team
     public void deletePokemonFromTeam(Integer teamId, Integer pokeId) {
         TeamDataComposite compositeKey = createCompositeKey(teamId, pokeId);
