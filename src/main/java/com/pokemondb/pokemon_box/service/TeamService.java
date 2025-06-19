@@ -62,11 +62,11 @@ public class TeamService {
     }
 
     // Create Pokemon for team
-    public TeamData addPokemonToTeam(Integer team_id, Integer poke_id, Integer position) {
-        Team team = teamRepository.findById(team_id)
+    public TeamData addPokemonToTeam(Integer teamId, Integer pokeId, Integer position) {
+        Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new RuntimeException("Team not found"));
 
-        Pokemon pokemon = pokemonRepository.findById(poke_id).orElseThrow(() -> new RuntimeException("Pokemon not found"));
+        Pokemon pokemon = pokemonRepository.findById(pokeId).orElseThrow(() -> new RuntimeException("Pokemon not found"));
 
         TeamData teamData = new TeamData(team, pokemon, position);
         return teamDataRepository.save(teamData);
