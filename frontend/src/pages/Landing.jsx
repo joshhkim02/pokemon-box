@@ -16,9 +16,11 @@ export default function Landing() {
         }}
       ></Box> */}
 
+
       <Box
         sx={{
-          backgroundColor: 'black',
+          backgroundImage: `url(src/assets/heroImage.png)`,
+          backgroundPositionY: '70%',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           minHeight: '80vh',
@@ -40,7 +42,7 @@ export default function Landing() {
           <Typography
             variant='h1'
             fontWeight='bold'
-            color='white'
+            color='#c93f3a'
             sx={{
               fontSize: { xs: '3rem', sm: '3.5rem', md: '5rem', lg: '6rem' },
             }}
@@ -50,7 +52,7 @@ export default function Landing() {
           <Typography
             variant='h6'
             fontWeight='bold'
-            color='white'
+            color='#c93f3a'
             sx={{
               fontSize: { xs: '1rem', sm: '1rem', md: '1.2rem', lg: '1.7rem' },
             }}
