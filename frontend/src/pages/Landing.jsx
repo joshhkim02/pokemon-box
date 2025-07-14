@@ -79,13 +79,63 @@ export default function Landing() {
       </Box>
 
       {/* Next section */}
-      <Box
+      <Container
+        maxWidth='lg'
         sx={{
           height: '50vh',
+          p: '1em',
+          gap: { xs: 0, md: '5em' },
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
-        <Typography>Next section</Typography>
-      </Box>
-    </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '1em',
+            gap: '1em',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant='h4' textAlign='center'>
+            Information on your favorite generation 1 Pokemon
+          </Typography>
+          <Button
+            variant='contained'
+            sx={{
+              height: '5vh',
+              width: '75%',
+              borderRadius: '50px',
+              fontSize: {
+                xs: '.8rem',
+                sm: '1rem',
+                md: '1.3rem',
+                lg: '1.5rem',
+              },
+              padding: { xs: '1em', sm: '1.3em', md: '1.3em', lg: '1.5em' },
+            }}
+          >
+            Try it now
+          </Button>
+        </Box>
+
+        <Box
+          component='img'
+          src='src/assets/heroImage.png'
+          alt='Demo picture'
+          sx={{
+            width: '50%'
+          }}
+        >
+
+
+        </Box>
+
+
+      </Container >
+    </Box >
   );
 }
