@@ -1,7 +1,7 @@
 import { Typography, Container, Box, Button, Divider, Grid } from '@mui/material';
 
 export default function Landing() {
-  const pokemon = ['bulbasaur', 'mewtwo', 'charizard', 'gyrados', 'zapdos', 'mew']
+  const pokemon = ['bulbasaur', 'mewtwo', 'charizard', 'gyarados', 'zapdos', 'mew']
   return (
     <Box>
       {/* Hero Image */}
@@ -170,11 +170,87 @@ export default function Landing() {
           justifyContent="center"
           alignItems="center"
         >
-          {Array.from({ length: 6 }).map((_, index) => (
+          <Grid
+            container
+            spacing={2}
+            justifyContent='center'
+            alignItems='center'
+          >
+            <Grid size={{ xs: 3, md: 5 }}
+              display="flex" justifyContent="center">
+              <Box
+                component='img'
+                src='src/assets/test.png'
+                alt='Demo picture'
+                sx={{
+                  imageRendering: 'pixelated',
+                  width: '50%'
+                }}
+              >
+              </Box>
+            </Grid>
+            <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
+              <Box
+                component='img'
+                src='src/assets/test2.png'
+                alt='Demo picture'
+                sx={{
+                  imageRendering: 'pixelated',
+                  width: '30%'
+                }}
+              >
+              </Box>
+            </Grid>
+            <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
+              <Box
+                component='img'
+                src='src/assets/pokemon_images/bulbasaur.png'
+                alt='Demo picture'
+                sx={{
+                  width: '30%'
+                }}
+              >
+              </Box>
+            </Grid>
+            <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
+              <Box
+                component='img'
+                src='src/assets/pokemon_images/bulbasaur.png'
+                alt='Demo picture'
+                sx={{
+                  width: '30%'
+                }}
+              >
+              </Box>
+            </Grid>
+            <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
+              <Box
+                component='img'
+                src='src/assets/pokemon_images/bulbasaur.png'
+                alt='Demo picture'
+                sx={{
+                  width: '30%'
+                }}
+              >
+              </Box>
+            </Grid>
+            <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
+              <Box
+                component='img'
+                src='src/assets/pokemon_images/bulbasaur.png'
+                alt='Demo picture'
+                sx={{
+                  width: '30%'
+                }}
+              >
+              </Box>
+            </Grid>
+          </Grid>
+          {/* {pokemon.map((poke, index) => (
             <Grid item xs={6} sm={4} md={2} key={index} display="flex" justifyContent="center">
               <Box
                 component="img"
-                src="src/assets/pokemon_images/bulbasaur.png"
+                src={`src/assets/pokemon_images/${poke}.png`}
                 alt="Demo picture"
                 sx={{
                   width: { xs: '80px', sm: '80px', md: '100px' },
@@ -182,82 +258,9 @@ export default function Landing() {
                 }}
               />
             </Grid>
-          ))}
+          ))} */}
         </Grid>
-        {/* <Grid
-          container
-          spacing={2}
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Grid size={{ xs: 3, md: 5 }}
-            display="flex" justifyContent="center">
-            <Box
-              component='img'
-              src='src/assets/pokemon_images/bulbasaur.png'
-              alt='Demo picture'
-              sx={{
-                width: '30%'
-              }}
-            >
-            </Box>
-          </Grid>
-          <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
-            <Box
-              component='img'
-              src='src/assets/pokemon_images/bulbasaur.png'
-              alt='Demo picture'
-              sx={{
-                width: '30%'
-              }}
-            >
-            </Box>
-          </Grid>
-          <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
-            <Box
-              component='img'
-              src='src/assets/pokemon_images/bulbasaur.png'
-              alt='Demo picture'
-              sx={{
-                width: '30%'
-              }}
-            >
-            </Box>
-          </Grid>
-          <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
-            <Box
-              component='img'
-              src='src/assets/pokemon_images/bulbasaur.png'
-              alt='Demo picture'
-              sx={{
-                width: '30%'
-              }}
-            >
-            </Box>
-          </Grid>
-          <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
-            <Box
-              component='img'
-              src='src/assets/pokemon_images/bulbasaur.png'
-              alt='Demo picture'
-              sx={{
-                width: '30%'
-              }}
-            >
-            </Box>
-          </Grid>
-          <Grid size={{ xs: 3, md: 5 }} display="flex" justifyContent="center">
-            <Box
-              component='img'
-              src='src/assets/pokemon_images/bulbasaur.png'
-              alt='Demo picture'
-              sx={{
-                width: '30%'
-              }}
-            >
-            </Box>
-          </Grid>
-        </Grid> */}
+
       </Container>
 
     </Box >
